@@ -1,0 +1,59 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default" namespace="/">
+        <action name="" class="struts.SearchProductAction">
+            <result type="redirectAction">
+                <param name="actionName">searchProduct</param>
+            </result>
+        </action>
+        
+        <action name="login" class="struts.LoginAction">
+            <result name="success" type="redirect">
+                searchProduct
+            </result>
+            <result name="fail">login.jsp</result>
+        </action>
+        
+        <action name="logout" class="struts.LogoutAction">
+            <result type="redirect">login.jsp</result>
+        </action>
+        
+        <action name="searchProduct" class="struts.SearchProductAction">
+            <result name="success">searchProduct.jsp</result>
+        </action>
+        
+        <action name="updateProduct" class="struts.UpdateProductAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">searchProduct</param>
+            </result>
+        </action>
+        
+        <action name="createProduct" class="struts.CreateProductAction">
+            <result name="success">createProduct.jsp</result>
+        </action>
+        
+        <action name="addToCart" class="struts.AddToCartAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">searchProduct</param>
+                <param name="message">${message}</param>
+            </result>
+        </action>
+        
+        <action name="updateCart" class="struts.UpdateCartAction">
+            <result>viewCart.jsp</result>
+        </action>
+        
+        <action name="confirmCart" class="struts.ConfirmCartAction">
+            <result name="success">viewCart.jsp</result>
+            <result name="fail">login.jsp</result>
+        </action>
+        
+        <action name="orderHistory" class="struts.OrderHistoryAction">
+            <result>orderHistory.jsp</result>
+        </action>
+    </package>
+</struts>
